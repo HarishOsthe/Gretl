@@ -1,0 +1,22 @@
+# Log started 2019-04-29 14:05
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open /home/osthe/Downloads/P12-Data-Science/P12-Churn-Modelling.csv
+dummify Gender
+dummify Geography
+rename 19 Germany
+rename 18 Spain
+rename 17 France
+rename 16 Male
+rename 15 Female
+# model 1
+logit Exited 0 CreditScore Age Tenure NumOfProducts HasCrCard \
+  IsActiveMember Female France Spain --p-values
+# model 2
+logit Exited 0 CreditScore Age Tenure NumOfProducts IsActiveMember Female \
+  France Spain --p-values
+Log_Balance=log10(Balance+1)
+# model 3
+logit Exited 0 CreditScore Age Tenure NumOfProducts IsActiveMember Female \
+  France Spain Log_Balance --p-values
+# store "/home/osthe/Desktop/Bank_churn_analysis_using_LR.gdt" --gzipped=1
