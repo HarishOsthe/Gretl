@@ -1,0 +1,8 @@
+# Log started 2019-04-29 15:23
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open /home/osthe/Desktop/EmailOffer.gdt
+# model 1
+logit TookAction 0 Female Age
+# model 2
+logit TookAction 0 Female Age --p-values
